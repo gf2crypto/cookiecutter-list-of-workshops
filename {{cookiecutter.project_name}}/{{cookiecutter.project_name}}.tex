@@ -1,0 +1,148 @@
+{% raw %}
+%!TEX program=pdflatex
+
+\documentclass[
+    a4paper,
+    oneside,
+    onecolumn,
+    landscape,
+    10pt
+]{memoir}
+
+
+\settrimmedsize{210mm}{297mm}{*}
+\setlength{\trimtop}{0pt} 
+\setlength{\trimedge}{\stockwidth} 
+\addtolength{\trimedge}{-\paperwidth} 
+\settypeblocksize{448.13pt}{634pt}{*} 
+\setulmarginsandblock{
+    1cm    % top margin
+}{
+    1cm    % bottom margin
+}{*}
+\setlrmarginsandblock{
+    1cm    % left margin
+}{
+    1cm  % right margin
+}{*}
+\setmarginnotes{17pt}{51pt}{\onelineskip} 
+\setheadfoot{\onelineskip}{\onelineskip} 
+\setheaderspaces{*}{\onelineskip}{*} 
+\checkandfixthelayout
+
+%Russian-specific packages
+%--------------------------------------
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+%--------------------------------------
+ 
+%Hyphenation rules
+%--------------------------------------
+\usepackage{hyphenat}
+\hyphenation{ма-те-ма-ти-ка вос-ста-нав-ли-вать}
+%--------------------------------------
+
+% Times-совместимый шрифт для математики
+\DeclareSymbolFont{letters}{OML}{ztmcm}{m}{it}
+\DeclareSymbolFontAlphabet{\mathnormal}{letters}
+
+\usepackage{tempora}
+\usepackage{amsthm}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}   %  качественные таблицы
+\usepackage{longtable}   %  "длинные" таблицы
+\usepackage{tabu}
+\usepackage{changepage}
+\usepackage{csquotes}
+
+%===================================================================
+%   Special commands
+%===================================================================
+
+\newcommand*{\sign}[2]{  % insert signature
+    \vspace*{2\baselineskip}
+    \noindent
+    \begin{minipage}{0.5\textwidth}
+      \begin{flushleft}
+        \SingleSpacing
+            #1
+       \end{flushleft}
+    \end{minipage}
+    \begin{minipage}{0.48\textwidth}
+        \begin{flushright}
+            \SingleSpacing
+            #2
+        \end{flushright}
+    \end{minipage}
+}
+
+% How to use:
+%    \sign{Job position}{FirstName SecondName}
+
+%-----------Specific header------------------------------
+
+
+\newcommand*{\header}[2]{
+    \begin{minipage}{0.4\textwidth}
+      \begin{flushleft}
+            #1
+      \end{flushleft}
+    \end{minipage}
+    \begin{minipage}{0.6\textwidth}  % the field `to whom`
+                                     % for example:
+                                     %    Rector of Lomonosov Moscow University
+                                     %    academician V. A. Sadovnichii
+      \begin{flushleft}
+        \SingleSpacing
+            #2
+       \end{flushleft}
+    \end{minipage}
+    \vspace*{2\baselineskip}
+}
+
+\renewcommand*{\caption}[1]{         % Insert caption of the later
+                                     % For example:
+                                     %    Dear Victor Antonovich!
+    \begin{center}
+        \SingleSpacing
+        {\LARGE
+          \textbf{#1}
+        }
+    \end{center}
+}
+
+\renewcommand*{\date}[1]{%  Insert date
+    \begin{flushright}
+        \textbf{#1}
+    \end{flushright}
+}
+
+\newcommand{\block}[2][\unskip]{%       %% Sepcial textblock
+
+  \hfill
+
+  \underline{\textbf{#1}}
+  \begin{adjustwidth*}{+1cm}{}
+    \begingroup%
+    \setlength{\parindent}{0cm}
+      #2
+    \endgroup%
+  \end{adjustwidth*}
+}
+%-----------Autonumeration index---------------------------------------
+\newcounter{index}
+\newcommand*{\No}{\noindent\refstepcounter{index}\textnumero~\theindex}
+\newcommand*{\Index}{\refstepcounter{index}\theindex}
+
+
+\begin{document}
+    % \pagestyle{standard}
+    \thispagestyle{empty}   % no number at the first page
+{% endraw %}
+    \input{ {{cookiecutter.project_name}}.source.tex }
+{% raw %}
+\end{document}
+{% endraw %}

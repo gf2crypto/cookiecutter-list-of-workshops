@@ -1,6 +1,6 @@
-# cookiecutter-ib-meeting-extract
+# cookiecutter-list-of-workshops
 
-The repository contains `cookiecutter` ([more details](https://cookiecutter.readthedocs.io/en/latest/)) template for LaTeX extract from department's of information security extract. Project uses the pdlatex engine to compile pdf.
+The repository contains `cookiecutter` ([more details](https://cookiecutter.readthedocs.io/en/latest/)) template for LaTeX list of workshops or special courses. Project uses the pdlatex engine to compile pdf.
 
 How to use this template:
 1. Install python interpreter
@@ -11,7 +11,7 @@ How to use this template:
 3. Make a directory for your project.
 4. Go to this directory and run the command from the console:
    ```bash
-   cookiecutter https://github.com/gf2crypto/cookiecutter-ib-meeting-extract.git
+   cookiecutter https://github.com/gf2crypto/cookiecutter-list-of-workshops.git
    ```
 5. Input parameters:
      - **project_name**, the name of your projects (only Latin chars is supported);
